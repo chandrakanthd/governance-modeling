@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+	<div class="container">
+	<div class="row">
+	<div class="col-xs-12">
+	<blockquote>
+		<h3>List of Project_Requirements</h3>
+		<ul>
+			{% for item in object_list %}
+				<li>{{ item.name }}</li>
+			{% endfor %}
+		</ul>
+	</blockquote>
+	<blockquote>
+		<h3><a href="/dbcontent/Project_Requirements/add">Click here</a> to add elements to database</h3>
+	</blockquote>
+	</div>
+	</div>
+	</div>
+
+{% endblock %}

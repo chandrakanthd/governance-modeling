@@ -1,0 +1,3 @@
+This section contains the 'about' section of the application.
+
+We can view the about page from this app.

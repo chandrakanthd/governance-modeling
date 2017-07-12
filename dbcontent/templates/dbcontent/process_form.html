@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col-sm-12 col-md-7">
+			<h3>Create a new Process</h3>
+			<div class="panel panel-default">
+				<div class="panel-body">
+
+					<form class="form-horizontal" action="" method="post">
+						{% csrf_token %}				
+						<h4>Fill in the details below</h4><br />	
+						{% include 'dbcontent/form-template.html' %}						
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success">Submit</button>
+								<a href="/dbcontent/Processes/list" class="btn btn-danger">Go Back</a>				
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+{% endblock %}

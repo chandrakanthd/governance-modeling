@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+	<div class="container">
+	<div class="row">
+	<div class="col-xs-6">
+	<blockquote>
+		<h3>List of Project_Parameters</h3>
+		<ul>
+			{% for parameter in object_list %}
+				<li>{{ parameter.name }}</li>
+			{% endfor %}
+		</ul>
+	</blockquote>
+	<blockquote>
+		<h3><a href="/dbcontent/Project_Parameters/add">Click here</a> to add elements to database</h3>
+	</blockquote>
+	</div>
+	</div>
+	</div>
+
+{% endblock %}

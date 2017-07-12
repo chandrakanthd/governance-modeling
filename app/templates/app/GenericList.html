@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+
+				<blockquote>
+					<a href="/Process_Items/add" class="btn btn-success">Add</a>
+					<a href="/Process_Items/add" class="btn btn-info">Modify</a>
+					<a href="/Process_Items/add" class="btn btn-danger">Delete</a>
+				</blockquote>
+
+				<blockquote>
+					<h3>List of </h3>
+					<ul>
+						{% for process in object_list %}
+							<li>{{ process.name }}</li>
+						{% endfor %}
+					</ul>
+				</blockquote>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

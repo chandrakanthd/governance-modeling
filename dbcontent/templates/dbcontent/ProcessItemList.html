@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+
+				<blockquote>
+					<h3>List of Process_Items</h3>
+					<ul>
+						{% for process in object_list %}
+							<li>{{ process.name }}</li>
+						{% endfor %}
+					</ul>
+				</blockquote>
+				<blockquote>
+					<h3><a href="/dbcontent/Process_Items/add">Click here</a> to add elements to database</h3>
+				</blockquote>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

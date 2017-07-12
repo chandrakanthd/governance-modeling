@@ -1,0 +1,3 @@
+Used to display the database contents.
+
+We can view the contents and also modify the contents from this app.

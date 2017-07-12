@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}Governance Modeling</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/app/content/site.css" />
+    <script src="/static/app/scripts/modernizr-2.6.2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand" title="Home Page"><b>Governance modeling</b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    {#<li><a href="{% url 'home' %}">Home</a></li>#}
+                    
+                    <li><a href="/functionalities" title="On Various Functionalities">Briefing</a></li>
+
+
+                    <li class = "dropdown">
+                        <a href="#" title="Various types" class="dropdown-toggle" data-toggle="dropdown">
+                            Functionalities <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li title = "Generates AND-OR Tree representing a conjunction and disjunction of set of processes">
+                                <a href = "/tree" >Generate AND-OR Tree for a process</a></li>
+                            <li title = "Retrieves all processes with the information for the related condition/prevent/result items">
+                                <a href = "/item">Retrieve Explanation for a item</a></li>
+                            <li title = "Retrieves a tree expressing the support for a process">
+                                <a href = "/item">Retrieve Process Support</a></li>
+                            <li title = "Retrieves a tree expressing the processes needed for the item">
+                                <a href = "/item">Retrieve Item Support</a></li>
+                            <li title = "Creates a Cartesian product of the processes which have the specified items as results">
+                                <a href = "/item">Get Items Generator set</a></li>
+                            <li title = "Retrieves a tree which matches the given process, and has been created earlier">
+                                <a href = "/item">Get a pre-generated Tree</a></li>
+                            <li title = "Return all available process with populated items information">
+                                <a href = "/item">Get all process with items</a></li>
+                            <li title = "Returns all items used in the described processes with populated process information">
+                                <a href = "/item">Get Items from processes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" title="Databse Contents" class="dropdown-toggle" data-toggle="dropdown">
+                            Database Contents <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li title = "">
+                                <a href = "/dbcontent/Process_Items/list">Process_Items</a></li>
+                            <li title = "">
+                                <a href = "/dbcontent/Agents/list">Agents</a></li>
+                            <li title = "">
+                                <a href = "/dbcontent/Processes/list">Processes</a></li>
+                            <!--<li title = "">
+                                <a href = "/dbcontent/Item_Roles/list">Item_Roles</a></li>-->
+                            <li title = "">
+                                <a href = "/dbcontent/Project_Parameters/list">Project_Parameters</a></li>
+                            <li title = "">
+                                <a href = "/dbcontent/Parameter_Values/list">Parameter_Values</a></li>
+                            <li title = "">
+                                <a href = "/dbcontent/Project_Requirements/list">Project_Requirements</a></li>
+                            <li title = "">
+                                <a href = "/dbcontent/Project_Requirement_Conditions/list">Project_Requirement_Conditions</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li><a href="/about" title="The Governance tool">About</a></li>
+                </ul>
+                {% include 'app/loginpartial.html' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        {% block content %}
+            
+        {% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy; {% now "Y" %} -  Model-Based Systems & Qualitative Reasoning Group @ Technical University of Munich</p>
+        </footer>
+    </div>
+        
+
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>
