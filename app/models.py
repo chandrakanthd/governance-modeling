@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 
 class ProcessItem(models.Model):
     name = models.CharField(max_length = 255, unique =True)
-    description = models.TextField(max_length = 1000, blank=True, null=True,)   
+    description = models.TextField(max_length = 1000, blank=True, null=True,)
     # condition_in_processes - from Process
     # prevent_in_processes - from Process
     # result_in_processes - from Process
@@ -18,14 +18,14 @@ class ProcessItem(models.Model):
 
     def get_absolute_url(self):
         return reverse('Process_Items/list', kwargs={'pk':self.pk})
-    
+
     def __str__(self):
         return self.name
 
 class Agent(models.Model):
     name = models.CharField(max_length = 255, unique =True)
     # processes - from Process
-    
+
 
     def get_absolute_url(self):
         return reverse('Agents/list')
@@ -35,19 +35,19 @@ class Agent(models.Model):
 
 class Process(models.Model):
     name = models.CharField(max_length = 255, unique=True)
-    description = models.TextField(max_length = 1000, blank=True, null=True,)   
-    agent = models.ForeignKey(Agent, 
-                                on_delete=models.PROTECT, 
-                                blank=True, 
-                                null=True, 
+    description = models.TextField(max_length = 1000, blank=True, null=True,)
+    agent = models.ForeignKey(Agent,
+                                on_delete=models.PROTECT,
+                                blank=True,
+                                null=True,
                                 related_name="processes")
-    condition_items = models.ManyToManyField(ProcessItem, 
+    condition_items = models.ManyToManyField(ProcessItem,
                                                 related_name="condition_in_processes",
                                                 blank=True,)
-    prevent_items = models.ManyToManyField(ProcessItem, 
+    prevent_items = models.ManyToManyField(ProcessItem,
                                             related_name="prevent_in_processes",
                                             blank=True,)
-    result_items = models.ManyToManyField(ProcessItem, 
+    result_items = models.ManyToManyField(ProcessItem,
                                             related_name="result_in_processes",
                                             blank=True,)
 
@@ -78,7 +78,7 @@ class ProjectParameter(models.Model):
                                 (ENUM, 'Enum'))
 
     name = models.CharField(max_length = 255, unique =True)
-    description = models.TextField(max_length = 1000, blank=True, null=True,)   
+    description = models.TextField(max_length = 1000, blank=True, null=True,)
     type = models.CharField(max_length=1, choices = PARAMETER_TYPE_CHOICES)
     # values - from ParameterValue
 
@@ -90,9 +90,9 @@ class ProjectParameter(models.Model):
         return self.name
 
 class ParameterValue(models.Model):
-    name = models.CharField(max_length = 255)  
-    description = models.TextField(max_length = 1000, blank=True, null=True,)    
-    parameter = models.ForeignKey(ProjectParameter, 
+    name = models.CharField(max_length = 255)
+    description = models.TextField(max_length = 1000, blank=True, null=True,)
+    parameter = models.ForeignKey(ProjectParameter,
                                     on_delete=models.CASCADE,
                                     related_name="values",
                                     limit_choices_to={'type': ProjectParameter.ENUM},)
@@ -109,14 +109,14 @@ class ParameterValue(models.Model):
 
 class ProjectRequirement(models.Model):
     name = models.CharField(max_length = 255, unique =True)
-    description = models.TextField(max_length = 1000, blank=True, null=True,)   
-    condition_items = models.ManyToManyField(ProcessItem, 
+    description = models.TextField(max_length = 1000, blank=True, null=True,)
+    condition_items = models.ManyToManyField(ProcessItem,
                                                 related_name="condition_in_requirements",
                                                 blank=True,)
-    prevent_items = models.ManyToManyField(ProcessItem, 
+    prevent_items = models.ManyToManyField(ProcessItem,
                                             related_name="prevent_in_requirements",
                                             blank=True,)
-    introduced_items = models.ManyToManyField(ProcessItem, 
+    introduced_items = models.ManyToManyField(ProcessItem,
                                                 related_name="introduced_in_requirements",
                                                 blank=True,)
     # conditions - from ProjectRequirementCondition
@@ -132,11 +132,11 @@ class ProjectRequirement(models.Model):
 
 class ProjectRequirementCondition(models.Model):
     name = models.CharField(max_length = 255, unique =True)
-    requirement = models.ForeignKey(ProjectRequirement, 
-                                    on_delete=models.CASCADE, 
+    requirement = models.ForeignKey(ProjectRequirement,
+                                    on_delete=models.CASCADE,
                                     related_name="conditions")
     condition_parameter = models.ForeignKey(ProjectParameter, on_delete=models.PROTECT)
-    allowed_values = models.ManyToManyField(ParameterValue, 
+    allowed_values = models.ManyToManyField(ParameterValue,
                                             blank=True)
     custom_value = models.CharField(max_length = 100, blank=True, null=True,)
 
@@ -150,4 +150,3 @@ class ProjectRequirementCondition(models.Model):
 
     def __str__(self):
         return self.name
-        

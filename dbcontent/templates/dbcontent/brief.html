@@ -1,0 +1,94 @@
+{% extends 'app/base.html' %}
+
+      {% block content %}
+          <h2>A brief on the various Database Models.</h2>
+
+
+          <blockquote>
+              <h3><a href={% url 'Process_Items/list' %}>Process Item</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the process, e.g. “EI”) </p>
+
+              <p><b>Usage:</b> Stores all possible condition, preventive, result, and introduced items from
+                all possible processes. In this table are stored not only paper artifacts of the process
+                (e.g. “Form 1”), but also intermediate activity result, meta data or other milestones relevant
+                for the processes.
+              </p>
+          </blockquote>
+
+          <blockquote>
+              <h3><a href={% url 'agent_list' %}>Agents</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the agent, e.g. “EAC of MoEF”)</p>
+
+              <p><b>Usage:</b> Stores all possible agents - government structures, proponent, etc.</p>
+          </blockquote>
+
+          <blockquote>
+              <h3><a href={% url 'Processes/list' %}>Processes</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the process, e.g. “EIA”)
+                <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp agent_id (foreign key, relevant agent)
+              </p>
+
+              <p><b>Usage:</b> Stores all processes (and sub processes), incl. governance, building, environmental clearance,
+                etc. A process is linked to relevant condition/preventive/result items.
+              </p>
+          </blockquote>
+
+          <blockquote>
+              <h3><a href={% url 'Project_Parameters/list' %}>Project Parameters</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                name (the unique name of the parameter, e.g. land type)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                type_id (foreign key to the type of the parameter)
+              </p>
+
+              <p><b>Usage:</b> The table stores the possible project parameters, e.g. environmental type/category,
+                land type, distance from temple. It can be extended to support further parameters, which enables
+                modelling different projects/processes (land acquisition, building, etc.)
+              </p>
+          </blockquote>
+
+          <blockquote>
+              <h3><a href={% url 'Parameter_Values/list' %}>Parameter Values</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the type)</p>
+
+              <p><b>Usage:</b> Holds the possible type of the project parameters:
+                 integer,
+                 boolean,
+                 string,
+                 enum
+              </p>
+              <p><b>Remarks:</b> Lookup table.</p>
+          </blockquote>
+
+          <blockquote>
+              <h3><a href={% url 'Project_Requirements/list' %}>Project Requirements</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of a project requirement, e.g. “All nuclear
+                power projects are EIA type A”)
+              </p>
+
+              <p><b>Usage:</b> Project requirements are used to describe required condition, preventive, and introduced
+                items when certain conditions are true for a project. For instance, a project requirement might
+                have a condition that the project is of an EIA category A. If this is true, then the project requires
+                a MoEF EC (process item).
+              </p>
+          </blockquote>
+
+          <blockquote>
+              <h3><a href={% url 'Project_Requirement_Conditions/list' %}>Project Requirement Conditions</a></h3>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp requirement_id (foreign key to the owning project requirement)
+                <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp condition_param_id (foreign key to the relevant project parameter)
+                <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp param_value_id (foreign key
+                to the parameter value)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp param_value (the parameter value if no param_value_id is specified)
+              </p>
+
+              <p><b>Usage:</b> Each project requirement can have multiple conditions. If all conditions match a project
+                description, then the project requirement is active. This table holds the relevant conditions with
+                information for the parameters and values to match. If a parameter is enum then the param_value_id
+                is used to store the value, otherwise the param_value colum.
+              </p>
+
+              <p><b>Remarks:</b> Currently all conditions are considered conjunctive. In the future disjunctive and negative
+                conditions might be useful, which can change the schema.
+              </p>
+          </blockquote>
+
+      {% endblock %}

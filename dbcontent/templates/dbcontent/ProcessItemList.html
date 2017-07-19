@@ -7,16 +7,22 @@
 			<div class="col-xs-6">
 
 				<blockquote>
-					<h3>List of Process_Items</h3>
+					<h3>List of Process Items</h3>
+					{% if user.is_authenticated %}
+					{% else %}
+					<p><small>Note: To add new entries, you need to be logged in</small></p>
+					{% endif %}
 					<ul>
 						{% for process in object_list %}
 							<li>{{ process.name }}</li>
 						{% endfor %}
 					</ul>
 				</blockquote>
+				{% if user.is_authenticated %}
 				<blockquote>
 					<h3><a href="/dbcontent/Process_Items/add">Click here</a> to add elements to database</h3>
 				</blockquote>
+				{% endif %}
 
 			</div>
 		</div>

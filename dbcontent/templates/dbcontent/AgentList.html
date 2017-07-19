@@ -3,22 +3,36 @@
 {% block content %}
 
 	<div class="container">
-	<div class="row">
-	<div class="col-xs-6">
-	<blockquote>
-		<h3>List of Agents</h3>
-		<ul>
-			{% for agent in object_list %}
-				<li>{{ agent.name }}</li>
-			{% endfor %}
-		</ul>
-
-	</blockquote>
-	<blockquote>
-		<h3><a href="/dbcontent/Agents/add">Click here</a> to add elements to database</h3>
-	</blockquote>
-	</div>
-	</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<blockquote>
+				<h3>List of Agents</h3>
+				{% if user.is_authenticated %}
+				{% else %}
+				<p><small>Note: To add new entries, you need to be logged in</small></p>
+				{% endif %}
+				<ul>
+					{% for post in posts %}
+						<li>
+							{% if user.is_authenticated %}
+								<a href="{% url 'agent_edit' pk=post.pk %}">{{ post.name }}</a>
+							{% else %}
+								{{ post.name }}
+							{% endif %}
+							{% if user.is_authenticated %}
+								<a class="btn btn-danger btn-xs" href="{% url 'agent_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</blockquote>
+				<blockquote>
+					{% if user.is_authenticated %}
+						<h3><a href="/dbcontent/Agents/add">Click here</a> to add elements to database</h3>
+					{% endif %}
+				</blockquote>
+			</div>
+		</div>
 	</div>
 
 {% endblock %}
