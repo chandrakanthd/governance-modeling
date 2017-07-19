@@ -17,13 +17,13 @@ urlpatterns = [
 
 
 
-    url(r'^Process_Items/add/', views.ProcessItemCreate.as_view(), name='Process_Items/add'),
-    url(r'^Agents/add/', views.agent_new, name='agent_new'),
-    url(r'^Processes/add/', views.ProcessCreate.as_view(), name='Processes/add'),
-    url(r'^Project_Parameters/add/', views.ProjectParameterCreate.as_view(), name='Project_Parameters/add'),
-    url(r'^Parameter_Values/add/', views.ParameterValueCreate.as_view(), name='Parameter_Values/add'),
-    url(r'^Project_Requirements/add/', views.ProjectRequirementCreate.as_view(), name='Project_Requirements/add'),
-    url(r'^Project_Requirement_Conditions/add/', views.ProjectRequirementConditionCreate.as_view(), name='Project_Requirement_Conditions/add'),
+    url(r'^Process_Items/add/$', views.ProcessItemCreate.as_view(), name='Process_Items/add'),
+    url(r'^Agents/add/$', views.agent_new, name='agent_new'),
+    url(r'^Processes/add/$', views.ProcessCreate.as_view(), name='Processes/add'),
+    url(r'^Project_Parameters/add/$', views.ProjectParameterCreate.as_view(), name='Project_Parameters/add'),
+    url(r'^Parameter_Values/add/$', views.ParameterValueCreate.as_view(), name='Parameter_Values/add'),
+    url(r'^Project_Requirements/add/$', views.ProjectRequirementCreate.as_view(), name='Project_Requirements/add'),
+    url(r'^Project_Requirement_Conditions/add/$', views.ProjectRequirementConditionCreate.as_view(), name='Project_Requirement_Conditions/add'),
 
     url(r'^Agents/(?P<pk>\d+)/edit/$', views.agent_edit, name='agent_edit'),
 

@@ -19,7 +19,7 @@ admin.autodiscover()
 
 urlpatterns = [
     # Examples:
-    url(r'^$', include('app.urls')),
+    url(r'^', include('app.urls')),
     url(r'^about/', include('about.urls')),
     url(r'^dbcontent/', include('dbcontent.urls')),
     url(r'^login/',

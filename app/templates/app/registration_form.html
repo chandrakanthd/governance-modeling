@@ -1,22 +1,25 @@
 {% extends 'app/base.html' %}
 
+
 {% block content %}
 
 <div class="container-fluid">
+
 	<div class="row">
+
 		<div class="col-sm-12 col-md-7">
-			<h3>Create a new Agent</h3>
+			<h3>Create a new account</h3>
 			<div class="panel panel-default">
 				<div class="panel-body">
 
-					<form class="form-horizontal" method="post">
+					<form class="form-horizontal" action="" method="post">
 						{% csrf_token %}
 						<h4>Fill in the details below</h4><br />
 						{% include 'dbcontent/form-template.html' %}
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" class="btn btn-success">Submit</button>
-								<a href="{% url 'agent_list' %}" class="btn btn-danger">Go Back</a>
+								<a href="/" class="btn btn-danger">Go Back</a>
 							</div>
 						</div>
 					</form>

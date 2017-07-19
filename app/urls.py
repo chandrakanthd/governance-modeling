@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^tree/$', views.home, name='home'),
     url(r'^item/$', views.item, name='item'),
     url(r'^functionalities/$', views.functionalities, name='functionalities'),
+    url(r'^signup/$',views.UserFormView.as_view(), name='signup'),
     ]
