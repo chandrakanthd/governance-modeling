@@ -17,7 +17,7 @@
 
           <blockquote>
               <h3><a href={% url 'agent_list' %}>Agents</a></h3>
-              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the agent, e.g. “EAC of MoEF”)</p>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the agent, e.g. “EAC or MoEF”)</p>
 
               <p><b>Usage:</b> Stores all possible agents - government structures, proponent, etc.</p>
           </blockquote>
@@ -36,8 +36,8 @@
           <blockquote>
               <h3><a href={% url 'Project_Parameters/list' %}>Project Parameters</a></h3>
               <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                name (the unique name of the parameter, e.g. land type)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                type_id (foreign key to the type of the parameter)
+                name (the unique name of the parameter, e.g. land type)
+                <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsptype_id (foreign key to the type of the parameter)
               </p>
 
               <p><b>Usage:</b> The table stores the possible project parameters, e.g. environmental type/category,
@@ -48,13 +48,11 @@
 
           <blockquote>
               <h3><a href={% url 'Parameter_Values/list' %}>Parameter Values</a></h3>
-              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp name (the unique name of the type)</p>
+              <p><b>Fields:</b> id (primary key)<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                name (the unique name of the type)</p>
 
-              <p><b>Usage:</b> Holds the possible type of the project parameters:
-                 integer,
-                 boolean,
-                 string,
-                 enum
+              <p><b>Usage:</b> Holds the possible type of the project parameters: integer, boolean,
+                string, enum
               </p>
               <p><b>Remarks:</b> Lookup table.</p>
           </blockquote>
