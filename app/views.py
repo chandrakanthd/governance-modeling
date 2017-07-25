@@ -53,19 +53,12 @@ def home(request):
 
             tb = governance_tree_builder.GovernanceTreeBuilder()
             tree_string = tb.pretty_print_items_support([i.id for i in req_items["condition_items"]])
-            return render(
-                request,
-                'app/index.html',
-                {
-                    'title':'Result ',
-                    "tree_string": tree_string
-                }
-            )
+            return render(request, 'app/index.html', {'title':'Result ', "tree_string": tree_string})
 
     else:
         form = ExecuteForm()
 
-    return render(request, 'app/index.html', {'title':'Home ', "execute_form": form}    )
+    return render(request, 'app/index.html', {'title':'Home ', "execute_form": form})
 
 
 def test(request):
