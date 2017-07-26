@@ -1,25 +1,28 @@
 	{% extends 'app/base.html' %}
 
         {% block content %}
-            <h2>Welcome to the Governance Tool</h2>
+            <h2>Welcome to the Governance Model</h2>
 
             <blockquote>
                 <h3>A brief introduction</h3>
-                <p>The Governance Tool generates a set of AND-OR trees of governance steps for a set of entities
-									(e.g. projects) selected based on certain attributes (columns, e.g. project category). </p>
+                <p>We take the perspective that the governance processes to be modeled can be presented as a set of
+									interconnected Processes
+									The goal is not only to construct process models but also to explore how a subset of this can be
+									represented in a database and allow for extracting
+									information about governance processes relevant to certain development projects.
+								</p>
             </blockquote>
 
 						<blockquote>
                 <h3>How it works</h3>
-									<p>The tool generates a set of AND-OR trees of governance steps for a set of entities
+									<p>It generates a set of AND-OR trees of governance steps for a set of entities
 										(e.g. projects) selected based on certain attributes (columns, e.g. project category).
 										It marks items that cannot be achieved because there exists no sequence of steps (either
 										because they are missing or due to explicit contradictions).
 									</p>
-									<p> Producing a tree implies that
-										it does not recognize if a step is reached via different paths. It also means that it handles
-										multiple conditional items (creating the AND) and alternative steps yielding the same result
-										item (creating the OR).
+									<p> Producing a tree implies that	it does not recognize if a step is reached via different paths. It also
+										means that it handles	multiple conditional items (creating the AND) and alternative steps yielding the
+										same result	item (creating the OR).
 									</p>
             </blockquote>
 
@@ -31,26 +34,4 @@
 								</p>
             </blockquote>
 
-
-            <!--
-            <h4>Given below is a list of functionalities of this tool</h4>
-            <ul>
-                <li title = "Generates AND-OR Tree representing a conjunction and disjunction of set of processes">
-                    <a href = "/tree" >Generate AND-OR Tree for a process</a></li>
-                <li title = "Retrieves all processes with the information for the related condition/prevent/result items">
-                    <a href = "/item">Retrieve Explanation for a item</a></li>
-                <li title = "Retrieves a tree expressing the support for a process">
-                    <a href = "/item">Retrieve Process Support</a></li>
-                <li title = "Retrieves a tree expressing the processes needed for the item">
-                    <a href = "/item">Retrieve Item Support</a></li>
-                <li title = "Creates a Cartesian product of the processes which have the specified items as results">
-                    <a href = "/item">Get Items Generator set</a></li>
-                <li title = "Retrieves a tree which matches the given process, and has been created earlier">
-                    <a href = "/item">Get a pre-generated Tree</a></li>
-                <li title = "Return all available process with populated items information">
-                    <a href = "/item">Get all process with items</a></li>
-                <li title = "Returns all items used in the described processes with populated process information">
-                    <a href = "/item">Get Items from processes</a></li>
-            </ul>
-            -->
         {% endblock %}
